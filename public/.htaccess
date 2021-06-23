@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Quitar slash al final de URL si no es una carpeta
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# Front Controller
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^ index.php [L]
