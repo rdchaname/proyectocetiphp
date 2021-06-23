@@ -1,0 +1,6 @@
+.idea/
+vendor/
+public/css
+public/js
+public/dist
+public/plugins
