@@ -13,15 +13,13 @@ require __DIR__ . "/../vendor/autoload.php";
 $app = new \Core\Application();
 
 # Definición de rutas
-$app->router->get('/login', ['ClaseControlador', 'metodo']);
-$app->router->post('/login', ['ClaseControlador', 'metodo']);
+$app->router->get('/login', [\App\Controllers\LoginController::class, 'form']);
+$app->router->post('/login', [\App\Controllers\LoginController::class, 'login']);
 
-$app->router->get('/registro', ['ClaseControlador', 'metodo']);
-$app->router->post('/registro', ['ClaseControlador', 'metodo']);
+$app->router->get('/registro', [\App\Controllers\RegistroController::class, 'form']);
+$app->router->post('/registro', [\App\Controllers\RegistroController::class, 'register']);
 
-echo "<pre>";
-//var_dump($_SERVER);
-//var_dump(basename($_SERVER['SCRIPT_NAME']));
-var_dump($app->request->getPath());
-echo "</pre>";
-exit;
+$app->router->get('/personas/edit/{id}', ['PersonaController', 'edit']);
+
+# Comparar
+$app->run();
